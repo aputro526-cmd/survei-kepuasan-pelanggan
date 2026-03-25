@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Survei Kepuasan Pelanggan — PT Adiputro Wirasejati</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #1a1a1a;
+      --bg-darker: #0f0f0f;
+      --bg-card: #252525;
+      --border-dark: #3a3a3a;
+      --text-primary: #e8e8e8;
+      --text-secondary: #b0b0b0;
+      --accent-gold: #FFD700;
+      --accent-orange: #FFC107;
+      --success: #66BB6A;
+      --warning: #FFA726;
+      --danger: #EF5350;
+      --info: #42A5F5;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       HEADER & BRANDING
+       ════════════════════════════════════════════════════════════ */
+    .header {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      border-bottom: 3px solid var(--accent-gold);
+      padding: 24px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       CONFIG PANEL (Top)
+       ════════════════════════════════════════════════════════════ */
+    .config-panel {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-dark);
+      padding: 16px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .config-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .config-group {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .config-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .config-group input,
+    .config-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      background-color: var(--bg-darker);
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: 'Segoe UI', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    .config-group input:focus,
+    .config-group textarea:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      background-color: #1a1a1a;
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    }
+
+    .config-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-copy, .btn-save, .btn-reset {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-copy {
+      background-color: var(--accent-gold);
+      color: #000;
+      flex: 1;
+    }
+
+    .btn-copy:hover {
+      background-color: #FFE000;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-save {
+      background-color: var(--success);
+      color: #fff;
+    }
+
+    .btn-save:hover {
+      background-color: #5fa660;
+      transform: translateY(-2px);
+    }
+
+    .btn-reset {
+      background-color: var(--text-secondary);
+      color: var(--bg-dark);
+      font-size: 12px;
+    }
+
+    .btn-reset:hover {
+      background-color: var(--text-primary);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       TAB NAVIGATION
+       ════════════════════════════════════════════════════════════ */
+    .tab-nav {
+      display: flex;
+      gap: 0;
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-dark);
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tab-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 16px 18px;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      min-width: 150px;
+    }
+
+    .tab-btn:hover {
+      color: var(--accent-gold);
+      background-color: rgba(255, 215, 0, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--accent-gold);
+      border-bottom-color: var(--accent-gold);
+      background-color: rgba(255, 215, 0, 0.08);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       MAIN CONTENT
+       ════════════════════════════════════════════════════════════ */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 28px 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       TYPOGRAPHY & SECTIONS
+       ════════════════════════════════════════════════════════════ */
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .subsection-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 20px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-dark);
+    }
+
+    .step-box {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-left: 4px solid var(--accent-gold);
+      padding: 16px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .step-box:hover {
+      background-color: rgba(255, 215, 0, 0.03);
+      border-left-color: var(--accent-orange);
+    }
+
+    .step-number {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background-color: var(--accent-gold);
+      color: #000;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: inline;
+    }
+
+    .step-content {
+      margin-top: 10px;
+      margin-left: 42px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .step-content p {
+      margin-bottom: 8px;
+    }
+
+    .code-block {
+      background-color: var(--bg-darker);
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      padding: 12px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--accent-gold);
+      overflow-x: auto;
+      margin: 10px 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 2px 4px 2px 0;
+    }
+
+    .status-badge.gray {
+      background-color: #3a3a3a;
+      color: #b0b0b0;
+    }
+
+    .status-badge.yellow {
+      background-color: rgba(255, 215, 0, 0.2);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold);
+    }
+
+    .status-badge.green {
+      background-color: rgba(102, 187, 106, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .status-badge.red {
+      background-color: rgba(239, 83, 80, 0.2);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       DASHBOARD (REKAP Preview)
+       ════════════════════════════════════════════════════════════ */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .dashboard-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-4px);
+      background-color: rgba(255, 215, 0, 0.05);
+      border-color: var(--accent-gold);
+    }
+
+    .dashboard-card h3 {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .dashboard-card .value {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .dashboard-card .unit {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    table th {
+      background-color: var(--bg-darker);
+      color: var(--accent-gold);
+      padding: 12px;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 2px solid var(--accent-gold);
+    }
+
+    table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-dark);
+      color: var(--text-secondary);
+    }
+
+    table tr:hover {
+      background-color: rgba(255, 215, 0, 0.03);
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       FAQ & CHECKLIST
+       ════════════════════════════════════════════════════════════ */
+    .faq-item {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text-primary);
+      background-color: rgba(255, 215, 0, 0.05);
+      transition: all 0.2s ease;
+    }
+
+    .faq-question:hover {
+      background-color: rgba(255, 215, 0, 0.1);
+      color: var(--accent-gold);
+    }
+
+    .faq-toggle {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 14px 16px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.8;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        max-height: 0;
+      }
+      to {
+        opacity: 1;
+        max-height: 500px;
+      }
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .checklist-item:hover {
+      background-color: rgba(255, 215, 0, 0.05);
+      border-color: var(--accent-gold);
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--accent-gold);
+    }
+
+    .checklist-item.checked {
+      opacity: 0.6;
+      background-color: rgba(102, 187, 106, 0.1);
+    }
+
+    .checklist-item.checked label {
+      text-decoration: line-through;
+      color: var(--text-secondary);
+    }
+
+    .checklist-label {
+      flex: 1;
+      font-size: 14px;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════ */
+    .footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-dark);
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: auto;
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ════════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 20px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .config-container {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .config-group {
+        min-width: 100%;
+      }
+
+      .config-buttons {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .btn-copy {
+        flex: none;
+        width: 100%;
+      }
+
+      .tab-btn {
+        min-width: 120px;
+        padding: 14px 12px;
+        font-size: 13px;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-box {
+        padding: 12px;
+      }
+
+      .step-content {
+        margin-left: 42px;
+        font-size: 13px;
+      }
+    }
+
+    /* ════════════════════════════════════════════════════════════
+       UTILITY
+       ════════════════════════════════════════════════════════════ */
+    .copy-success {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--success);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      animation: slideUp 0.3s ease;
+      z-index: 1000;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .highlight {
+      background-color: rgba(255, 215, 0, 0.15);
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: var(--accent-gold);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HEADER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="header">
+  <div class="header-content">
+    <h1>🚌 Panduan Survei Kepuasan Pelanggan</h1>
+    <p>PT Adiputro Wirasejati — Sistem Otomatis | Versi 1.0</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CONFIG PANEL
+     ══════════════════════════════════════════════════════════════ -->
+<div class="config-panel">
+  <div class="config-container">
+    <div class="config-group" style="flex: 2;">
+      <label>📋 Link Google Sheets Survei</label>
+      <input type="text" id="linkSheets" placeholder="Paste link Google Sheets di sini..." value="https://docs.google.com/spreadsheets/d/1WZ23XcFbddG2fghYtkh9ewT-hJ6snYBe-1tVXDqR97U/">
+    </div>
+    <div class="config-group">
+      <label>✉️ Email Direksi (Notifikasi Alert)</label>
+      <input type="email" id="emailDireksi" placeholder="Email..." value="qmciwan@gmail.com">
+    </div>
+    <div class="config-buttons">
+      <button class="btn-copy" onclick="copySheetLink()">📋 Salin Link Sheets</button>
+      <button class="btn-save" onclick="saveConfig()">💾 Simpan</button>
+      <button class="btn-reset" onclick="resetConfig()">↻</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TAB NAVIGATION
+     ══════════════════════════════════════════════════════════════ -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab(0)">👤 RESEPSIONIS</button>
+  <button class="tab-btn" onclick="switchTab(1)">📊 DASHBOARD</button>
+  <button class="tab-btn" onclick="switchTab(2)">❓ FAQ</button>
+  <button class="tab-btn" onclick="switchTab(3)">📋 CHECKLIST</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ══════════════════════════════════════════════════════════════ -->
+<div class="main-wrapper">
+  <div class="content-area">
+
+    <!-- TAB 0: RESEPSIONIS ────────────────────────────────────────────── -->
+    <div class="tab-content active" id="tab-0">
+      <div class="section-title">👤 Panduan Resepsionis — Penggunaan Harian</div>
+
+      <div class="subsection-title">🎯 Alur Kerja (5 Tahap)</div>
+      <div class="step-box">
+        <span class="step-number">1</span>
+        <span class="step-title">Input Data PO Baru</span>
+        <div class="step-content">
+          <p>Setelah unit diterima dari customer:</p>
+          <ul style="margin-left: 20px;">
+            <li>Buka <span class="highlight">Google Sheets</span> (dari config panel atas ⬆️)</li>
+            <li>Masuk ke sheet <strong>DATA PO</strong></li>
+            <li>Isi kolom: No PO, Nama Perusahaan, Tipe Bus, Jumlah Unit, Tgl Serah Terima</li>
+            <li>Kolom Status otomatis terisi <span class="status-badge gray">BELUM DIKIRIM</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">2</span>
+        <span class="step-title">Generate Link Survei</span>
+        <div class="step-content">
+          <p>Langkah-langkah:</p>
+          <ul style="margin-left: 20px;">
+            <li>Di sheet DATA PO, <strong>klik pada baris PO yang akan dikirim</strong></li>
+            <li>Klik menu <strong>🚌 Adiputro Survey</strong> (di toolbar atas Google Sheets)</li>
+            <li>Pilih <strong>🔗 Generate Link untuk Baris Terpilih</strong></li>
+            <li>Dialog popup akan muncul dengan link siap salin</li>
+            <li>Status otomatis berubah jadi <span class="status-badge yellow">LINK DITERBITKAN</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">3</span>
+        <span class="step-title">Salin & Kirim via WhatsApp</span>
+        <div class="step-content">
+          <p>Gunakan template pesan ini:</p>
+          <div class="code-block">Yth. Bapak/Ibu [nama PIC],
+
+Terima kasih telah mempercayakan kebutuhan armada bus kepada PT Adiputro Wirasejati.
+
+Mohon luangkan waktu 2 menit untuk mengisi survei kepuasan kami:
+[PASTE LINK DI SINI]
+
+Masukan Bapak/Ibu sangat berarti untuk peningkatan layanan kami.
+
+Terima kasih 🙏
+— Tim Adiputro Wirasejati</div>
+          <p style="margin-top: 10px;">✅ Kirim langsung ke PIC perusahaan customer via WhatsApp pribadi (bukan grup umum)</p>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">4</span>
+        <span class="step-title">Sinkronisasi Manual (Setelah Customer Isi)</span>
+        <div class="step-content">
+          <p>Setiap pagi dan saat customer sudah isi survei:</p>
+          <ul style="margin-left: 20px;">
+            <li>Klik menu <strong>🚌 Adiputro Survey</strong></li>
+            <li>Pilih <strong>🔄 Sinkron Manual DATA PO dari Respons</strong></li>
+            <li>Tunggu proses ≈10 detik</li>
+            <li>Status otomatis berubah menjadi <span class="status-badge green">SURVEI DIISI ✅</span></li>
+            <li>Skor, NPS, dan Flag Divisi terisi otomatis</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">5</span>
+        <span class="step-title">Monitor & Tindak Lanjuti</span>
+        <div class="step-content">
+          <p>Pantau status PO secara rutin:</p>
+          <ul style="margin-left: 20px;">
+            <li><span class="status-badge red">OVERDUE ⚠️</span> = Sudah 7 hari, customer belum mengisi → follow-up via telp</li>
+            <li>Jika ada skor rendah (≤3) → <strong>Email alert</strong> langsung ke direksi (otomatis)</li>
+            <li>Buka sheet <strong>REKAP</strong> untuk lihat dashboard ringkasan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection-title">📝 Identitas Resepsionis (Penting!)</div>
+      <p style="margin-bottom: 10px;">Setiap resepsionis <strong>WAJIB login dengan akun Google masing-masing</strong>. Nama dan email Anda akan tercatat otomatis saat generate link (untuk akuntabilitas & audit trail).</p>
+
+      <div class="subsection-title">⚠️ Perhatian Penting</div>
+      <ul style="margin-left: 20px; color: var(--text-secondary);">
+        <li><strong>❌ JANGAN</strong> ubah data di sheet RESPONS SURVEI secara manual</li>
+        <li><strong>❌ JANGAN</strong> hapus kolom J–N di DATA PO (terisi otomatis sistem)</li>
+        <li><strong>❌ JANGAN</strong> bagikan link Google Sheets ke pihak luar tanpa izin</li>
+        <li><strong>✅ HARUS</strong> jalankan Sinkron Manual minimal 1x sehari</li>
+      </ul>
+    </div>
+
+    <!-- TAB 1: DASHBOARD ──────────────────────────────────────────────── -->
+    <div class="tab-content" id="tab-1">
+      <div class="section-title">📊 Dashboard REKAP — Preview</div>
+      <p style="margin-bottom: 20px; color: var(--text-secondary);">Buka sheet <strong>REKAP</strong> di Google Sheets untuk melihat dashboard lengkap. Berikut adalah preview ringkasan utama yang akan tampil:</p>
+
+      <div class="subsection-title">📋 Ringkasan Umum</div>
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <h3>🗂️ Total PO Terdaftar</h3>
+          <div class="value">—</div>
+          <div class="unit">diupdate real-time</div>
+        </div>
+        <div class="dashboard-card">
+          <h3>📤 Total Link Dikirim</h3>
+          <div class="value">—</div>
+          <div class="unit">yang sudah dibuat</div>
+        </div>
+        <div class="dashboard-card">
+          <h3>✅ Total Survei Diisi</h3>
+          <div class="value">—</div>
+          <div class="unit">customer sudah isi</div>
+        </div>
+        <div class="dashboard-card">
+          <h3>⚠️ Total Overdue</h3>
+          <div class="value">—</div>
+          <div class="unit">> 7 hari belum diisi</div>
+        </div>
+      </div>
+
+      <div class="subsection-title">⭐ Penilaian Rata-rata</div>
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <h3>📊 Skor Kepuasan</h3>
+          <div class="value">—</div>
+          <div class="unit">dari skala 1–5</div>
+        </div>
+        <div class="dashboard-card">
+          <h3>🎯 Rata-rata NPS</h3>
+          <div class="value">—</div>
+          <div class="unit">dari skala 0–10</div>
+        </div>
+      </div>
+
+      <div class="subsection-title">📈 Klasifikasi NPS</div>
+      <p style="color: var(--text-secondary); margin-bottom: 12px;">Berdasarkan pertanyaan: "Seberapa besar kemungkinan Anda merekomendasikan Adiputro?"</p>
+      
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>Kategori</th>
+            <th>Rentang Skor</th>
+            <th>Arti & Tindakan</th>
+          </tr>
+          <tr>
+            <td><strong>😍 Promoter</strong></td>
+            <td>9–10</td>
+            <td>Sangat puas, kemungkinan besar merekomendasikan. <strong>Pertahankan!</strong></td>
+          </tr>
+          <tr>
+            <td><strong>😐 Passive</strong></td>
+            <td>7–8</td>
+            <td>Puas tapi tidak antusias. Perlu ditingkatkan untuk jadi Promoter.</td>
+          </tr>
+          <tr>
+            <td><strong>😠 Detractor</strong></td>
+            <td>0–6</td>
+            <td>Tidak puas, risiko memberi ulasan buruk. <strong>Tindak lanjuti segera!</strong></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="subsection-title">🎨 Warna Status & Skor</div>
+      <p style="color: var(--text-secondary); margin-bottom: 12px;">Sheet DATA PO akan berwarna otomatis berdasarkan nilai:</p>
+      
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>Warna</th>
+            <th>Skor Kepuasan</th>
+            <th>NPS</th>
+            <th>Arti</th>
+          </tr>
+          <tr>
+            <td><span class="status-badge green">█ Hijau</span></td>
+            <td>≥ 4.0</td>
+            <td>≥ 9</td>
+            <td>Baik — Customer sangat puas</td>
+          </tr>
+          <tr>
+            <td><span class="status-badge yellow">█ Kuning</span></td>
+            <td>3.0–3.9</td>
+            <td>7–8</td>
+            <td>Sedang — Perlu perhatian</td>
+          </tr>
+          <tr>
+            <td><span class="status-badge red">█ Merah</span></td>
+            <td>&lt; 3.0</td>
+            <td>≤ 6</td>
+            <td>Buruk — Alert dikirim ke direksi!</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: FAQ ────────────────────────────────────────────────────── -->
+    <div class="tab-content" id="tab-2">
+      <div class="section-title">❓ FAQ — Pertanyaan Umum</div>
+
+      <!-- FAQ: Customer -->
+      <div class="subsection-title">👥 Untuk Customer (Yang Mengisi Survei)</div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Berapa lama mengisi survei ini?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Hanya <strong>2 menit saja</strong>. Ada 7 pertanyaan singkat: 5 pertanyaan skala (1–5), 1 pertanyaan NPS (0–10), dan 1 pertanyaan saran opsional.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apakah data saya aman?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Ya. Data Anda disimpan di <strong>Google Sheets</strong> milik PT Adiputro Wirasejati dengan enkripsi standar Google. Hanya diakses oleh direksi dan supervisor terkait untuk evaluasi internal.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana jika saya mengisi survei berkali-kali?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Anda boleh mengisi ulang, tapi sistem hanya mencatat <strong>respons pertama</strong> (berdasarkan No PO yang sama) ke sheet DATA PO. Ini agar jika Anda ingin merevisi, tetap bisa tanpa duplikasi data.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Pertanyaan apa saja yang akan ditanya?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <strong>BAGIAN 1: Kualitas Produk & Pengiriman</strong>
+          <ol style="margin: 8px 0 0 20px;">
+            <li>Kualitas bodi & finishing (skala 1–5)</li>
+            <li>Kesesuaian spesifikasi dengan pesanan (3 pilihan)</li>
+            <li>Ketepatan waktu pengiriman (skala 1–5)</li>
+          </ol>
+          <strong style="display: block; margin-top: 8px;">BAGIAN 2: Kualitas Layanan</strong>
+          <ol style="margin: 8px 0 0 20px;">
+            <li>Pelayanan tim Sales (skala 1–5)</li>
+            <li>Proses serah terima & dokumen (skala 1–5)</li>
+          </ol>
+          <strong style="display: block; margin-top: 8px;">BAGIAN 3: Rekomendasi</strong>
+          <ol style="margin: 8px 0 0 20px;">
+            <li>NPS: Seberapa besar kemungkinan Anda merekomendasikan kami? (0–10)</li>
+          </ol>
+          <strong style="display: block; margin-top: 8px;">BAGIAN 4: Saran (Opsional)</strong>
+          <ol style="margin: 8px 0 0 20px;">
+            <li>Ada yang ingin Anda sampaikan? (teks bebas)</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- FAQ: Resepsionis -->
+      <div class="subsection-title">👤 Untuk Resepsionis (Yang Mengirim Link)</div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Di mana saya lihat riwayat link yang pernah saya generate?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Klik menu <strong>🚌 Adiputro Survey</strong> → pilih <strong>📋 Riwayat Link Saya</strong>. Akan tampil tabel berisi semua PO yang pernah Anda generate link-nya (No PO, Nama Perusahaan, Status, Waktu).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana jika saya berganti orang (ada resepsionis baru)?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Tidak ada masalah. Resepsionis baru cukup login dengan akun Google masing-masing dan membuka spreadsheet yang sama. Nama & email akan tercatat otomatis saat generate link. Tidak perlu mengubah setting apapun.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana jika link yang saya kirim error / customer tidak bisa buka?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Hubungi <strong>Admin IT</strong> untuk perbaiki. Kemungkinan penyebab:
+          <ul style="margin-left: 20px; margin-top: 8px;">
+            <li>Form belum pernah di-setup atau ada error teknis</li>
+            <li>Entry ID berubah (jarang terjadi)</li>
+          </ul>
+          Admin IT bisa jalankan menu <strong>🔧 Perbaiki Error</strong> untuk fix otomatis.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Kapan saya harus jalankan Sinkron Manual?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <strong>Minimal 1x sehari</strong>, yang disarankan:
+          <ul style="margin-left: 20px; margin-top: 8px;">
+            <li><strong>Setiap pagi jam 08:00–09:00</strong> → cek respons yang masuk semalam</li>
+            <li><strong>Setelah kirim link ke banyak customer</strong> → update status</li>
+            <li><strong>Sebelum rapat evaluasi mingguan</strong> → data sudah up-to-date</li>
+            <li><strong>Saat ada laporan customer sudah isi</strong> → jangan tunggu lama</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- FAQ: Admin/Direksi -->
+      <div class="subsection-title">👨‍💼 Untuk Admin/Direksi (Yang Monitoring Alert)</div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana saya tahu jika ada penilaian rendah dari customer?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <strong>Otomatis!</strong> Setiap ada customer yang beri skor rendah:
+          <ul style="margin-left: 20px; margin-top: 8px;">
+            <li><strong>Skor ≤ 3 dari 5</strong> → Email alert langsung dikirim ke email direksi</li>
+            <li><strong>NPS ≤ 6 dari 10</strong> → Email + Telegram notifikasi (jika sudah setup)</li>
+          </ul>
+          Email berisi: nama customer, No PO, rincian penilaian, divisi yang perlu tindak lanjut, dan pesan/saran dari customer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Berapa threshold (batas) skor untuk mengirim alert?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <strong>Default:</strong>
+          <ul style="margin-left: 20px; margin-top: 8px;">
+            <li><strong>Skor Kepuasan:</strong> Alert jika ≤ 3 / 5</li>
+            <li><strong>NPS:</strong> Alert jika ≤ 6 / 10</li>
+            <li><strong>Overdue:</strong> Flag jika sudah 7 hari link tidak diisi</li>
+          </ul>
+          Nilai ini bisa diubah via Admin IT dengan mengedit kode di Apps Script (bagian KONFIGURASI).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apa itu "Flag Divisi Bermasalah"?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          Sistem otomatis menandai divisi mana yang perlu tindak lanjut berdasarkan skor:
+          <ul style="margin-left: 20px; margin-top: 8px;">
+            <li><strong>Skor Bodi ≤ 3</strong> → 🏭 PRODUKSI</li>
+            <li><strong>Skor Spesifikasi ≤ 3</strong> → 🔧 ENGINEERING + SALES</li>
+            <li><strong>Skor Waktu ≤ 3</strong> → 📅 PPIC / PRODUKSI</li>
+            <li><strong>Skor Sales ≤ 3</strong> → 💼 SALES</li>
+            <li><strong>Skor Serah Terima ≤ 3</strong> → 📄 ADMINISTRASI</li>
+            <li><strong>NPS ≤ 6</strong> → ⚠️ DIREKSI</li>
+          </ul>
+          Ini membantu identifikasi masalah dengan tepat & cepat.
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: CHECKLIST ──────────────────────────────────────────────── -->
+    <div class="tab-content" id="tab-3">
+      <div class="section-title">📋 Checklist Harian — Resepsionis</div>
+      <p style="margin-bottom: 18px; color: var(--text-secondary);">Gunakan checklist ini untuk memastikan pekerjaan setiap hari berjalan lancar. Klik untuk menandai ✓</p>
+
+      <div class="subsection-title">⏰ Setiap Pagi (Jam 08:00–09:00)</div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Cek apakah ada respons survei baru yang masuk</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Jalankan 🔄 Sinkron Manual (update status & skor)</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Cek PO yang berstatus OVERDUE (warna merah)</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Jika ada OVERDUE → follow-up via telpon ke customer</label>
+      </div>
+
+      <div class="subsection-title">📦 Setiap Ada Unit Serah Terima</div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Input data PO baru di sheet DATA PO</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Isi kolom: No PO, Nama Perusahaan, Tipe Bus, Jumlah Unit, Tgl Serah</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Generate link survei (klik baris → menu 🔗 Generate Link)</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Salin link & kirim via WhatsApp ke PIC perusahaan</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Gunakan template pesan yang sudah disediakan (lihat tab RESEPSIONIS)</label>
+      </div>
+
+      <div class="subsection-title">✅ Setiap Akhir Minggu (Jumat)</div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Buka sheet REKAP untuk review ringkasan survei minggu ini</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Lihat rata-rata skor & NPS — apakah ada tren buruk?</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Screenshot / catat hasil untuk persiapan rapat evaluasi</label>
+      </div>
+
+      <div class="subsection-title">⚠️ Larangan (JANGAN Lakukan)</div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">❌ Jangan ubah kolom J–N (Tgl Diisi, Skor, NPS, Flag, Catatan) secara manual</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">❌ Jangan hapus baris di sheet RESPONS SURVEI</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">❌ Jangan bagikan link Google Sheets ke pihak luar tanpa izin</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">❌ Jangan ubah format tanggal atau nilai di sheet (biar sistem yang atur)</label>
+      </div>
+
+      <div class="subsection-title">🚨 Jika Ada Error</div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Hubungi Admin IT dengan screenshot pesan error</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Admin IT jalankan menu 🔧 Perbaiki Error (jalankan jika ada masalah)</label>
+      </div>
+      <div class="checklist-item" onclick="toggleCheck(this)">
+        <input type="checkbox">
+        <label class="checklist-label">Tunggu notifikasi sukses dari Admin IT sebelum melanjutkan</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="footer">
+  🚌 Panduan Survei Kepuasan Pelanggan — PT Adiputro Wirasejati | Versi 1.0 | Maret 2026
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════════════════════════ -->
+<script>
+  // ═══ TAB NAVIGATION ═══════════════════════════════════════════
+  function switchTab(index) {
+    const tabs = document.querySelectorAll('.tab-content');
+    const btns = document.querySelectorAll('.tab-btn');
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+    btns.forEach(btn => btn.classList.remove('active'));
+
+    tabs[index].classList.add('active');
+    btns[index].classList.add('active');
+
+    localStorage.setItem('currentTab', index);
+  }
+
+  // ═══ CONFIG PANEL ════════════════════════════════════════════
+  function saveConfig() {
+    const linkSheets = document.getElementById('linkSheets').value.trim();
+    const emailDireksi = document.getElementById('emailDireksi').value.trim();
+
+    if (!linkSheets || !emailDireksi) {
+      showNotification('❌ Isi semua field terlebih dahulu!', 'error');
+      return;
+    }
+
+    localStorage.setItem('linkSheets', linkSheets);
+    localStorage.setItem('emailDireksi', emailDireksi);
+    showNotification('✅ Konfigurasi tersimpan!');
+  }
+
+  function copySheetLink() {
+    const link = document.getElementById('linkSheets').value.trim();
+    if (!link) {
+      showNotification('❌ Link Sheets kosong!', 'error');
+      return;
+    }
+    navigator.clipboard.writeText(link).then(() => {
+      showNotification('✅ Link Sheets tersalin ke clipboard!');
+    });
+  }
+
+  function resetConfig() {
+    if (confirm('⚠️ Reset semua konfigurasi ke default?')) {
+      document.getElementById('linkSheets').value = 'https://docs.google.com/spreadsheets/d/1WZ23XcFbddG2fghYtkh9ewT-hJ6snYBe-1tVXDqR97U/';
+      document.getElementById('emailDireksi').value = 'qmciwan@gmail.com';
+      localStorage.removeItem('linkSheets');
+      localStorage.removeItem('emailDireksi');
+      showNotification('🔄 Konfigurasi direset ke default');
+    }
+  }
+
+  // ═══ LOAD CONFIG FROM LOCAL STORAGE ══════════════════════════
+  function loadConfig() {
+    const savedLink = localStorage.getItem('linkSheets');
+    const savedEmail = localStorage.getItem('emailDireksi');
+
+    if (savedLink) document.getElementById('linkSheets').value = savedLink;
+    if (savedEmail) document.getElementById('emailDireksi').value = savedEmail;
+  }
+
+  // ═══ FAQ TOGGLE ══════════════════════════════════════════════
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+      const faqItem = this.parentElement;
+      faqItem.classList.toggle('open');
+    });
+  });
+
+  // ═══ CHECKLIST TOGGLE ════════════════════════════════════════
+  function toggleCheck(element) {
+    const checkbox = element.querySelector('input[type="checkbox"]');
+    checkbox.checked = !checkbox.checked;
+    element.classList.toggle('checked');
+    saveChecklistState();
+  }
+
+  function saveChecklistState() {
+    const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+    const states = Array.from(checklistItems).map(cb => cb.checked);
+    localStorage.setItem('checklistState', JSON.stringify(states));
+  }
+
+  function loadChecklistState() {
+    const states = JSON.parse(localStorage.getItem('checklistState') || '[]');
+    const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+    checklistItems.forEach((cb, idx) => {
+      if (states[idx]) {
+        cb.checked = true;
+        cb.closest('.checklist-item').classList.add('checked');
+      }
+    });
+  }
+
+  // ═══ NOTIFICATION ════════════════════════════════════════════
+  function showNotification(message, type = 'success') {
+    const notif = document.createElement('div');
+    notif.className = 'copy-success';
+    notif.textContent = message;
+    notif.style.backgroundColor = type === 'error' ? '#EF5350' : '#66BB6A';
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 3000);
+  }
+
+  // ═══ RESTORE TAB STATE ═══════════════════════════════════════
+  function restoreTabState() {
+    const currentTab = parseInt(localStorage.getItem('currentTab') || '0');
+    switchTab(currentTab);
+  }
+
+  // ═══ INIT ════════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', function() {
+    loadConfig();
+    restoreTabState();
+    loadChecklistState();
+  });
+</script>
+
+</body>
+</html>
